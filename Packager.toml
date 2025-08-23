@@ -1,7 +1,0 @@
-name = "simple-calculator"
-product-name = "SimpleCalculator"
-identifier = "com.simplecalculator.aiden"
-version = "0.0.0"
-out-dir = "./dist"
-before-packaging-command = "cargo build --release"
-
