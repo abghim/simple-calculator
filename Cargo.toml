@@ -1,0 +1,20 @@
+[package]
+name = "calculator"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+slint = { version = "1.12.1", default-features = false, features = ["renderer-femtovg","backend-winit", "compat-1-2"] }
+
+
+[build-dependencies]
+slint-build = "1.12.1"
+
+
+[package.metadata.bundle]
+name        = "SimpleCalculator"
+identifier  = "com.simplecalculator.app"
+icon        = ["icons/Calculator.icns"]     # optional
+category    = "public.app-category.developer-tools"

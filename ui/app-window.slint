@@ -1,0 +1,217 @@
+// import { } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    in-out property <float> result: 0.0;
+    in-out property <float> operand: 0.0;
+    in-out property <bool> show_result: true;
+    in-out property <int> operation: 0; // 0 +, 1 -, 2 *, 3 /
+    
+    Rectangle {
+        x: 0px;
+        y: 0px;
+
+        Text {
+            x: 0px;
+            y: 0px;
+            text: show_result ? result : operand;
+            font-size: 100px;
+        }
+    }
+
+    HorizontalLayout {
+        x: 0px;
+        y: 130px;
+        Rectangle {
+
+            width: 10%;
+            border-width: 2px;
+            border-color: black;
+            color: orange;
+            Text {
+                text: "+";
+
+                font-size: 40px;
+            }
+
+            TouchArea {
+                clicked => {
+                    if (show_result) {
+                        show_result = !show_result;
+                        operation = 0;
+                    } else {
+                        show_result = !show_result;
+                        if (operation == 0) {
+                            result = result + operand;
+                        } else if (operation == 1) {
+                            result = result - operand;
+                        } else if (operation == 2) {
+                            result = result * operand;
+                        } else {
+                            result = result / operand;
+                        }
+                        operand = 0;
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+
+            width: 10%;
+            border-width: 2px;
+            border-color: black;
+            color: orange;
+            
+            Text {
+                font-size: 40px;
+                text: "-";
+            }
+
+            TouchArea {
+                clicked => {
+                    if (show_result) {
+                        show_result = !show_result;
+                        operation = 1;
+                    } else {
+                        show_result = !show_result;
+                        if (operation == 0) {
+                            result = result + operand;
+                        } else if (operation == 1) {
+                            result = result - operand;
+                        } else if (operation == 2) {
+                            result = result * operand;
+                        } else {
+                            result = result / operand;
+                        }
+                        operand = 0;
+                    }
+                }
+            }
+        }
+
+
+        Rectangle {
+
+            width: 10%;
+            border-width: 2px;
+            border-color: black;
+            color: orange;
+            Text {
+                text: "*";
+
+                font-size: 40px;
+            }
+
+            TouchArea {
+                clicked => {
+                    if (show_result) {
+                        show_result = !show_result;
+                        operation = 2;
+                    } else {
+                        show_result = !show_result;
+                        if (operation == 0) {
+                            result = result + operand;
+                        } else if (operation == 1) {
+                            result = result - operand;
+                        } else if (operation == 2) {
+                            result = result * operand;
+                        } else {
+                            result = result / operand;
+                        }
+                        operand = 0;
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+
+            width: 10%;
+            border-width: 2px;
+            border-color: black;
+            color: orange;
+            Text {
+                text: "/";
+
+                font-size: 40px;
+            }
+
+            TouchArea {
+                clicked => {
+                    if (show_result) {
+                        show_result = !show_result;
+                        operation = 3;
+                    } else {
+                        show_result = !show_result;
+                        if (operation == 0) {
+                            result = result + operand;
+                        } else if (operation == 1) {
+                            result = result - operand;
+                        } else if (operation == 2) {
+                            result = result * operand;
+                        } else {
+                            result = result / operand;
+                        }
+                        operand = 0;
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+
+            width: 10%;
+            border-width: 2px;
+            border-color: black;
+            color: orange;
+            Text {
+                text: "=";
+
+                font-size: 40px;
+            }
+
+            TouchArea {
+                clicked => {
+                    if (show_result) {
+                        result = 0;
+                    } else {
+                        show_result = !show_result;
+                        if (operation == 0) {
+                            result = result + operand;
+                        } else if (operation == 1) {
+                            result = result - operand;
+                        } else if (operation == 2) {
+                            result = result * operand;
+                        } else {
+                            result = result / operand;
+                        }
+                        operand = 0;
+                    }
+                }
+            }
+        }
+    
+        for value in [0, 1, 2, 3, 4 ,5, 6, 7, 8, 9]: Rectangle {
+            color: grey;
+
+            border-width: 2px;
+            border-color: black;
+            
+            Text {
+                text: value;
+
+                font-size: 40px;
+            }
+    
+            TouchArea {
+                clicked => {
+                    if (root.show_result) {
+                        root.result = root.result*10 + value;
+                    } else {
+                        root.operand = root.operand*10 + value;
+                    }
+                }
+            }
+        }
+    }
+}
